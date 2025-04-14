@@ -1,0 +1,1 @@
+1 - create a .env file and set the port of the server.
