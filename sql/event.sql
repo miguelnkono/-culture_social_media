@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS `event` (
     FOREIGN KEY (event_creator) REFERENCES user(user_id),
     FOREIGN KEY (event_sponsor) REFERENCES user(user_id)
 ) ENGINE=InnoDB;
+ alter table event drop foreign key event_ibfk_1;
+ alter table event add constraint event_ibfk_1 foreign key (event_creator) references user(user_id) on delete cascade;
 
 -- insertions for the event for testing
 -- Events created by managers (user_id 1-5) and sponsored by sponsors (user_id 6-10)

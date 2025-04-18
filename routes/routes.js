@@ -2,13 +2,14 @@
 
 import { Router } from 'express';
 import {
-    createUser, deleteUser,
+    createUser,
+    deleteUser,
     getUserByEmail,
     getUserByName,
     getUsers,
     registerUser,
-    resetPassword,
     updateUser,
+    userUpdate,
 } from "../controllers/userController.js";
 
 const router = Router();
@@ -16,12 +17,13 @@ const router = Router();
 // handling the users
 router.get('/users', getUsers)
 router.get('/user/:username', getUserByName)
-router.get('/user/:useremail', getUserByEmail)
+
+// updating a user
 router.put('/user/:id', updateUser)
+router.put('/user/:id/update', userUpdate)
 
 // handling the registration, login and forgotten password of users
 router.post('/login', createUser)
-router.post('/:id/resetPassword', resetPassword)
 router.post('/:id/register', registerUser)
 router.delete('/:id/logout', deleteUser)
 

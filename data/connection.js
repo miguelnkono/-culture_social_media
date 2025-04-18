@@ -17,9 +17,9 @@ const dbConfig = {
 const connection = createPool(dbConfig)
 
 try {
-    const conn = await connection.getConnection();
+    await connection.getConnection();
     console.log('Successfully connected to the database');
-    conn.release();
+    /*conn.release();*/
 } catch (error) {
     console.error('Database connection failed:', error);
     process.exit(1);

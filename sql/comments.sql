@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS `comment` (
     FOREIGN KEY (user_id) REFERENCES `user`(user_id),
     FOREIGN KEY (publication_id) REFERENCES `publication`(publication_id) ON DELETE SET NULL
 )  ENGINE=InnoDB;
+alter table comment drop foreign key comment_ibfk_1;
+alter table comment add constraint comment_ibfk_1 foreign key (user_id) references user(user_id) on delete cascade;
 
 -- insertions for tests
 INSERT INTO `comment` (user_id, publication_id, comment_content) VALUES
